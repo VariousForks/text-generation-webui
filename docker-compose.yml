@@ -1,0 +1,28 @@
+version: '3.8'
+services:
+  text-generation-webui:
+    container_name: text-generation-webui
+    restart: always
+    volumes:
+      - '{path_to_your_models}/models:/models'
+    ports:
+      - '7860:7860'
+      - '5005:5005'
+      - '5000:5000'
+    image: 'text-generation:latest'
+    ulimits:
+      memlock: -1
+    mem_limit: 20gb
+    command:
+      [
+        "--model",
+        "Wizard-Vicuna-13B-Uncensored.ggml.q5_1.bin",
+        "--extension",
+        "api",
+        "--api",
+        "--cpu",
+        "--mlock",
+        "--listen",
+        "--listen-port",
+        "7860"
+      ]
