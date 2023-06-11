@@ -4,7 +4,8 @@ services:
     container_name: text-generation-webui
     restart: always
     volumes:
-      - '{path_to_your_models}/models:/models'
+      #- '{path_to_your_models}/models:/models'
+      - './models:/models'
     ports:
       - '7860:7860'
       - '5005:5005'
